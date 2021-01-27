@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="分享我的海报"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/rl_share_poster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+
+        <ImageView
+            android:id="@+id/im_bg_share"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bg_rec_share_poster"
+            android:padding="@dimen/dp_12"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_share_default"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/iv_head_photo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@+id/im_bg_share"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_marginTop="@dimen/dp_26"
+            android:src="@drawable/pic_head" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/im_bg_share"
+            android:layout_marginTop="26dp"
+            android:layout_marginRight="@dimen/dp_23"
+            android:text="港口的哨兵"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_alignRight="@+id/im_bg_share"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="@dimen/dp_23"
+            android:text="4月28日周三，09-10"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+        <ImageView
+            android:id="@+id/iv_sport_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/tv_time"
+            android:layout_alignRight="@+id/im_bg_share"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="@dimen/dp_23" />
+
+        <TextView
+            android:id="@+id/tv_allocation_speed_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/im_bg_share"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginBottom="20dp"
+            android:ems="2"
+            android:text="最佳配速"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_allocation_speed"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_allocation_speed_title"
+            android:layout_marginTop="-3dp"
+            android:layout_toRightOf="@+id/tv_allocation_speed_title"
+            android:text="10'38″"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+
+        <TextView
+            android:id="@+id/tv_distance_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/im_bg_share"
+            android:layout_marginLeft="@dimen/dp_70"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@+id/tv_allocation_speed_title"
+            android:ems="2"
+            android:text="运动里程"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/im_bg_share"
+            android:layout_marginBottom="18dp"
+            android:layout_toRightOf="@+id/tv_distance_title"
+            android:text="12.3"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_calorie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/im_bg_share"
+            android:layout_marginLeft="@dimen/dp_50"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@+id/tv_distance_title"
+            android:ems="2"
+            android:text="热量消耗"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_calorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/im_bg_share"
+            android:layout_marginBottom="18dp"
+            android:layout_toRightOf="@+id/tv_calorie_title"
+            android:text="234590"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_save_poster"
+        android:layout_width="@dimen/dp_180"
+        android:layout_height="45dp"
+        android:layout_marginTop="@dimen/dp_2"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:autoLink="all"
+        android:gravity="center"
+        android:text="保存到手机图库"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_14"
+        app:layout_constraintBottom_toTopOf="@+id/ll_circle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_weixin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/im_cancel"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <ImageView
+            android:id="@+id/im_weixin"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/bg_selector_poster_weixin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:text="微信"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/im_cancel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/im_circle"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_selector_poster_circle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:text="微信朋友圈"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/im_cancel"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/im_qq"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/bg_selector_poster_qq" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:text="QQ"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/im_cancel"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:background="@drawable/bg_selector_poster_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

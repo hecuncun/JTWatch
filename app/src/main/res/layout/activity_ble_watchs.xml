@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_shape_toolbar">
+
+        <ImageView
+            android:id="@+id/im_back"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:background="@drawable/bg_back_selector"
+            android:padding="@dimen/dp_10" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="手表连接"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_16" />
+
+        <ImageView
+            android:id="@+id/iv_disconnect"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:background="@drawable/bg_disconnect_selector"
+            android:padding="@dimen/dp_10"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_watch_list_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="拥有哪一款设备?"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingRight="@dimen/dp_15" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_watch_connected_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_simple"
+            android:layout_width="230dp"
+            android:layout_height="304dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="75dp"
+            android:src="@drawable/icon_watch" />
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_below="@+id/iv_simple"
+            android:layout_centerHorizontal="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/icon_yewan" />
+
+        <TextView
+            android:layout_below="@+id/iv_logo"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:text="JIANGTAI"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_below="@+id/tv_logo"
+            android:layout_above="@+id/fl_sync"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_device_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="SW2500"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+        <FrameLayout
+            android:id="@+id/fl_sync"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/progress_sync_bg"/>
+            <ImageView
+                android:id="@+id/progress_iv"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/clip"/>
+            <TextView
+                android:id="@+id/tv_sync_time"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:text=""
+                tools:ignore="SmallSp" />
+
+        </FrameLayout>
+        <LinearLayout
+            android:id="@+id/dialog_container"
+            android:visibility="gone"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="确认断开?"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+                <View android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/bg_shape_navigation_up_circular"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/iv_canel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_cancel"/>
+                    <ImageView
+                        android:layout_marginStart="80dp"
+                        android:id="@+id/iv_ok"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_ok"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

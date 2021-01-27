@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <com.xw.repo.supl.SlidingUpPanelLayout
+        android:id="@+id/sliding_up_panel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_toolbar"
+        android:layout_marginTop="-10.5dp"
+        android:background="@color/black_transparent_little">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.amap.api.maps.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/im_bg_share"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_rec_share_poster"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_share_06"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_sport_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp" />
+
+            <ImageView
+                android:id="@+id/im_replace"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_replace_selector"
+                android:padding="@dimen/dp_10"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/rl_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/bg_shape_down_circular">
+
+                <TextView
+                    android:id="@+id/tv_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_5"
+                    android:paddingRight="@dimen/dp_6"
+                    android:text="12.3"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_distance_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_distance"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="@dimen/dp_6"
+                    android:text="@string/distance_unit"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_calorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/rl_distance"
+                android:background="@drawable/bg_shape_down_circular">
+
+                <TextView
+                    android:id="@+id/tv_calorie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_5"
+                    android:paddingRight="@dimen/dp_6"
+                    android:text="2311"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_calorie_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_calorie"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="@dimen/dp_6"
+                    android:text="@string/unit_calorie"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </com.xw.repo.supl.SlidingUpPanelLayout>
+
+    <View
+        android:id="@+id/v_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/map_conver" />
+
+    <com.lhzw.bluetooth.view.SportTrailView
+        android:id="@+id/trailview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_toolbar"
+        android:layout_marginTop="-10.5dp"
+        android:background="@color/map_conver" />
+
+    <include
+        android:id="@+id/title_toolbar"
+        layout="@layout/toolbar" />
+</RelativeLayout>

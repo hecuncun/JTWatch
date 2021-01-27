@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/gray_bottom">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/im_background"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="center"
+        android:src="@drawable/icon_share_default"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="@color/colorAccent"
+        app:riv_border_width="0.1dp"
+        app:riv_corner_radius_bottom_left="@dimen/dp_10"
+        app:riv_corner_radius_bottom_right="@dimen/dp_10"
+        app:riv_mutate_background="true"
+        app:riv_oval="false"
+        app:riv_tile_mode="clamp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_shape_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/im_back"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:background="@drawable/bg_back_selector"
+            android:padding="@dimen/dp_10" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="2020年4月28日/星期三"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_16" />
+
+        <ImageView
+            android:id="@+id/im_share"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:background="@drawable/bg_share_selector"
+            android:padding="@dimen/dp_10" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/splite"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_50"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:background="@color/gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/im_background"
+        app:layout_goneMarginTop="@dimen/dp_20" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splite" />
+
+    <ImageView
+        android:id="@+id/Iv_no_data"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:src="@drawable/icon_no_data"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splite" />
+
+    <ImageView
+        android:id="@+id/im_replace"
+        android:layout_width="@dimen/dp_25"
+        android:layout_height="@dimen/dp_25"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_replace_selector"
+        android:padding="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="@+id/im_background"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_head_photo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_60"
+        android:src="@drawable/pic_head"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        tools:text="港口哨兵"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_16"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_head_photo" />
+
+    <TextView
+        android:id="@+id/tv_second_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="疆泰陪您运动1天"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_14"
+        android:textStyle="normal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_sports_num_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:text="运动"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_14"
+        app:layout_constraintBottom_toBottomOf="@+id/im_background"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_sports_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginBottom="@dimen/dp_2"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_20"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sports_num_title"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl_step"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_20"
+        app:layout_constraintBottom_toBottomOf="@+id/im_background"
+        app:layout_constraintLeft_toRightOf="@+id/tv_sports_num_title">
+
+        <TextView
+            android:id="@+id/tv_sports_step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_sports_step_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_sports_step_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="步数"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_14" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_calorie"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_20"
+        app:layout_constraintBottom_toBottomOf="@+id/im_background"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/tv_sports_calorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_sports_calorie_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_sports_calorie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="热量(cal)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_14" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_20"
+        app:layout_constraintBottom_toBottomOf="@+id/im_background"
+        app:layout_constraintRight_toLeftOf="@+id/rl_calorie">
+
+        <TextView
+            android:id="@+id/tv_sport_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_sports_distance_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_sports_distance_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="距离(米)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_14" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

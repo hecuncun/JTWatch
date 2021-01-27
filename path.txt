@@ -1,0 +1,1 @@
+git clone git://192.168.1.223/SearchLocMap_fx.git

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorPrimary"
+              android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+    <View style="@style/horizontalOrangeLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_30"
+        android:paddingTop="@dimen/dp_30">
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/icon_orange_circle_bg">
+
+            <TextView
+                android:id="@+id/tv_step_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="222222"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_bigger"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_step_num"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="步"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_small"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:background="@drawable/icon_green_circle_bg">
+
+            <TextView
+                android:id="@+id/tv_cal_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="91567"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_bigger"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_cal_num"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="卡"
+                android:textColor="@color/green_circle"
+                android:textSize="@dimen/text_size_small"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View style="@style/horizontalOrangeLine"/>
+
+    <TextView
+        android:id="@+id/tv_select_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10"
+        android:text="2020-11-11"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_bigger"/>
+
+    <com.necer.view.WeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#000000"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+    <com.necer.calendar.MonthCalendar
+        android:id="@+id/monthCalendar"
+        android:layout_marginBottom="@dimen/dp_24"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:bgCalendarColor="@color/colorPrimary"
+        app:isShowHoliday="false"
+        app:isShowLunar="false"
+        app:selectCircleColor="@color/colorPrimary"
+        app:selectCircleRadius="0dp"
+        app:selectSolarTextColorColor="@color/orange"
+        app:solarTextColor="@color/white"
+        app:todaySolarSelectTextColor="@color/orange"/>
+
+
+</LinearLayout>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bg_shape_circular">
+
+            <TextView
+                android:id="@+id/tv_allocation_speed_analyze"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="配速分析"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <com.lhzw.dmotest.view.HorizontalBarGraph
+                android:id="@+id/tv_hor_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_allocation_speed_analyze"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/tv_allocation_speed_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_hor_bar"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="6公里\t累计用时 00:32:58"
+                android:textColor="@color/text_gray"
+                android:textSize="14dp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/linechart_allocation_speed"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_below="@+id/tv_allocation_speed_note"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_5"></com.github.mikephil.charting.charts.LineChart>
+        </RelativeLayout>
+
+        <!--        心率-->
+        <RelativeLayout
+            android:id="@+id/rl_speed_heart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bg_shape_circular">
+
+            <TextView
+                android:id="@+id/tv_heart_rate_range_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/heart_rate_range"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16" />
+
+            <com.github.mikephil.charting.charts.HorizontalBarChart
+                android:id="@+id/horizontalbar"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_below="@+id/tv_heart_rate_range_title"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginRight="15dp"
+                android:paddingTop="30dp"></com.github.mikephil.charting.charts.HorizontalBarChart>
+
+
+            <TextView
+                android:id="@+id/tv_speed_heart_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/horizontalbar"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/speed_heart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:id="@+id/tv_speed_heart_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_speed_heart_title"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/tv_speed_heart_title"
+                android:text="次/分"
+                android:textColor="@color/gray_lite"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_speed_heart_av"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_speed_heart_unit"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="122"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12" />
+
+
+            <TextView
+                android:id="@+id/tv_speed_heart_av_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_speed_heart_unit"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/tv_speed_heart_av"
+                android:text="平均"
+                android:textColor="@color/gray_lite"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_speed_heart_best"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_speed_heart_unit"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/tv_speed_heart_av_title"
+                android:text="167"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12" />
+
+
+            <TextView
+                android:id="@+id/tv_speed_heart_best_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_speed_heart_unit"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/tv_speed_heart_best"
+                android:text="最大"
+                android:textColor="@color/gray_lite"
+                android:textSize="@dimen/sp_12" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/linechart_speed_heart"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_below="@+id/tv_speed_heart_best_title"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_5"></com.github.mikephil.charting.charts.LineChart>
+        </RelativeLayout>
+
+        <!-- 步频 -->
+        <RelativeLayout
+            android:id="@+id/rl_step_stride"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bg_shape_circular">
+
+            <TextView
+                android:id="@+id/tv_step_stride_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/step_stride"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:id="@+id/tv_step_stride_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_step_stride_title"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/tv_step_stride_title"
+                android:text="步/分"
+                android:textColor="@color/gray_lite"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_step_stride_av"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_step_stride_unit"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="0.58"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12" />
+
+
+            <TextView
+                android:id="@+id/tv_step_stride_av_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_step_stride_unit"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/tv_step_stride_av"
+                android:text="平均"
+                android:textColor="@color/gray_lite"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_step_stride_best"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_step_stride_unit"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/tv_step_stride_av_title"
+                android:text="1.54"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12" />
+
+
+            <TextView
+                android:id="@+id/tv_step_num_best_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_step_stride_unit"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/tv_step_stride_best"
+                android:text="最佳"
+                android:textColor="@color/gray_lite"
+                android:textSize="@dimen/sp_12" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/linechart_speed_walk"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_below="@+id/tv_step_num_best_title"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_5"></com.github.mikephil.charting.charts.LineChart>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_shape_up_circular_panel_share">
+
+            <TextView
+                android:id="@+id/tv_share_poster"
+                android:layout_width="110dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_shape_circular_share_def"
+                android:gravity="center"
+                android:text="生成海报"
+                android:textColor="@color/shate_text_color"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="用户协议和隐私政策"
+        android:textColor="#666666"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#666666"
+        android:layout_margin="15dp"
+        android:text="请您务必审慎阅读、充分理解“用户协议”和“隐私协议”各条款，包括但不限于：为了向您提供视频拍摄和视频剪辑、内容分享等服务，我们需要收集您的设备信息、操作日志等信息。您可以在“设置”中查看、变更、删除个人信息并管理您的授权，您可阅读"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#EEEEEE" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:textColor="#666666"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:text="暂不使用" />
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:textColor="@color/color_yellow_primary"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:text="同意" />
+    </LinearLayout>
+</LinearLayout>

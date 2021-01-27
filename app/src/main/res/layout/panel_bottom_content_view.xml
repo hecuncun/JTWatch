@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:layout_marginLeft="@dimen/dp_6"
+    android:layout_marginRight="@dimen/dp_6"
+    android:alpha="0.0"
+    android:background="@android:color/transparent"
+    android:focusable="false"
+    android:orientation="horizontal"
+    tools:alpha="1.0">
+
+    <RelativeLayout
+        android:id="@+id/rl_sport_data"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_shape_up_circular">
+
+        <LinearLayout
+            android:id="@+id/ll_gradient_splite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_shape_gradient_left" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_3"
+                android:text="慢"
+                android:textColor="@color/red_dot_color"
+                android:textSize="10sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:background="@drawable/bg_shape_gradient_medi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_3"
+                android:text="快"
+                android:textColor="@color/green_little"
+                android:textSize="10sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_shape_gradient_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_gradient_splite"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_duration_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="耗时"
+                android:textColor="@color/yellow"
+                android:textSize="8sp" />
+
+            <ImageView
+                android:id="@+id/iv_duration_clock"
+                android:layout_width="@dimen/dp_14"
+                android:layout_height="@dimen/dp_14"
+                android:layout_marginTop="@dimen/dp_1"
+                android:src="@drawable/icon_duration_clock" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_gradient_splite"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/ll_duration"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="23:59:59"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_heart_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_gradient_splite"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/tv_duration"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_heart_rate_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="平均"
+                android:textColor="@color/red"
+                android:textSize="8sp" />
+
+            <ImageView
+                android:id="@+id/iv_heart_rate_clock"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:src="@drawable/icon_heart_rate" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_heart_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_gradient_splite"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/ll_heart_rate"
+            android:text="122"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_stride_frequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_gradient_splite"
+            android:layout_marginLeft="86dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/ll_heart_rate"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_stride_frequency_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="步频"
+                android:textColor="@color/blue_light"
+                android:textSize="8sp" />
+
+            <ImageView
+                android:id="@+id/iv_stride_frequency"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:src="@drawable/icon_stride_frequency" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_stride_frequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_gradient_splite"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/ll_stride_frequency"
+            android:text="107"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_steps_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_duration"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_steps_num_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="步数"
+                android:textColor="@color/blue"
+                android:textSize="8sp" />
+
+            <ImageView
+                android:id="@+id/iv_steps_num"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:src="@drawable/icon_step_num" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_steps_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_duration"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/ll_steps_num"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            tools:text="18247" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_allocation_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_duration"
+            android:layout_alignLeft="@+id/ll_heart_rate"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_allocation_speed_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="配速"
+                android:textColor="@color/orange_light1"
+                android:textSize="8sp" />
+
+            <ImageView
+                android:id="@+id/iv_allocation_speed"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:src="@drawable/icon_allocation_speed" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_allocation_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_duration"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/ll_allocation_speed"
+            android:text="14'02"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_best_allocation_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_duration"
+            android:layout_alignLeft="@+id/ll_stride_frequency"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_best_allocation_speed_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="最佳"
+                android:textColor="@color/purple"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tv_best_allocation_speed_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="配速"
+                android:textColor="@color/purple"
+                android:textSize="8sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_best_allocation_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_duration"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/ll_best_allocation_speed"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="14'02"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/r1_head_photo"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/bg_shape_head_oval">
+
+        <ImageView
+            android:id="@+id/iv_head_photo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/pic_head" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_per_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:text="港口的哨兵"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</RelativeLayout>

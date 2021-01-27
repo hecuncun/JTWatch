@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/panel_content_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="false">
+    <!-- 这是展开的头 -->
+    <include
+        android:id="@+id/panel_menu_layout"
+        layout="@layout/panel_top_content_view" />
+
+    <!-- 这是内容主体 -->
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/panel_expend_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/panel_menu_layout"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:background="@android:color/transparent">
+
+        <View
+            android:id="@+id/v_splite"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_splite">
+
+            <include layout="@layout/panel_main_content_view" />
+        </RelativeLayout>
+
+    </android.support.constraint.ConstraintLayout>
+    <!-- 这是底部卡片 -->
+    <include
+        android:id="@+id/panel_collapse_layout"
+        layout="@layout/panel_bottom_content_view" />
+</RelativeLayout>

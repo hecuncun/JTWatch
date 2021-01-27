@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/share_map"
+        layout="@layout/sport_share_poster_map" />
+
+    <ImageView
+        android:id="@+id/iv_date_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/dp_6"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="@dimen/dp_6"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_sport_indoor" />
+
+</LinearLayout>

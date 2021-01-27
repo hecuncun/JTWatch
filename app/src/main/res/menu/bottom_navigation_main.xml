@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/icon_home"
+        android:title="首页"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sports"
+        android:enabled="true"
+        android:icon="@drawable/icon_sports"
+        android:title="运动"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_watch"
+        android:enabled="false"
+        app:showAsAction="ifRoom"
+        android:title="" />
+
+    <item
+        android:id="@+id/action_setting"
+        android:enabled="true"
+        android:icon="@drawable/icon_setting"
+        android:title="设置"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_connect"
+        android:enabled="true"
+        android:icon="@drawable/icon_connect"
+        android:title="连接"
+        app:showAsAction="ifRoom" />
+
+</menu>

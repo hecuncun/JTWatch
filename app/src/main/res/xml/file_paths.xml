@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+<!--    <external-path-->
+<!--        name="external-path"-->
+<!--        path="apk_file" />-->
+    <external-path path="Android/data/com.lhzw.bluetooth/" name="files_root" />
+    <external-path path="." name="external_storage_root" />
+
+</paths>

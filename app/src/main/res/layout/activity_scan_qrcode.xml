@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.bingoogolapple.qrcode.zxing.ZXingView
+        android:id="@+id/zxingview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:qrcv_animTime="1000"
+        app:qrcv_borderColor="@android:color/transparent"
+        app:qrcv_borderSize="1dp"
+        app:qrcv_cornerColor="@color/white"
+        app:qrcv_cornerLength="20dp"
+        app:qrcv_cornerSize="5dp"
+        app:qrcv_maskColor="#33FFFFFF"
+        app:qrcv_rectWidth="250dp"
+        app:qrcv_scanLineColor="#F33F3F"
+        app:qrcv_scanLineSize="1dp"
+        app:qrcv_topOffset="150dp" />
+
+    <ImageView
+        android:id="@+id/iv_light"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
+        android:padding="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_icon_light"
+        app:layout_constraintBottom_toTopOf="@id/iv_finish"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_selector_finish_scan"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <!--
+       定义应用程序的数据库名称。
+       默认情况下，每个数据库名都应该以.db结尾。
+       如果你没有用。db来命名你的数据库，LitePal会自动为你加上后缀。
+       For example:
+       下面写法会生成YeWan.db
+       -->
+    <dbname value="YeWan" />
+    <!--
+       定义数据库的版本。
+       每次你想要升级数据库，修改映射标记中定义的版本值+ 1，数据库升级将会被自动处理。
+       -->
+    <version value="1" />
+
+    <!--
+        用映射标签指定的modle在表中定义数据模型.
+        LitePal会在模型中定义的字段将映射到对应表的列中。
+        For example:
+        PersonalInfoBean 属于package com.lhzw.bluetooth.bean.PersonalInfoBean
+        -->
+    <list>
+        <mapping class="com.lhzw.bluetooth.bean.PersonalInfoBean" />
+        <mapping class="com.lhzw.bluetooth.bean.SportInfoAddrBean" />
+        <mapping class="com.lhzw.bluetooth.bean.WatchInfoBean" />
+        <mapping class="com.lhzw.bluetooth.bean.DailyDataBean" />
+        <mapping class="com.lhzw.bluetooth.bean.DailyInfoDataBean" />
+        <mapping class="com.lhzw.bluetooth.bean.BoundaryAdrrBean" />
+        <mapping class="com.lhzw.bluetooth.bean.SportActivityBean" />
+        <mapping class="com.lhzw.bluetooth.bean.CurrentDataBean" />
+        <mapping class="com.lhzw.bluetooth.bean.SportInfoAddrBean" />
+        <mapping class="com.lhzw.bluetooth.bean.ClimbingSportBean" />
+        <mapping class="com.lhzw.bluetooth.bean.FlatSportBean" />
+        <mapping class="com.lhzw.bluetooth.bean.SportDetailInfobean" />
+    </list>
+
+    <!--
+           keep ：按类和字段名大小写作为表名和列名
+           upper ：将所有的类和字段名称以大写的方式作为表明和列名。
+           lower ：将所有的类和字段名称以小写的方式作为表明和列名。
+       -->
+    <cases value="keep"></cases>
+    <!--
+      定义.db文件的位置。
+      "internal"表示.db文件将存储在内部存储的数据库文件夹中，没有人可以访问,默认设置。。其实就是在本应用包名下新建数据库databases/xxx.db
+      "external"表示.db文件将存储在主外部存储设备上的目录路径中，应用程序可以在该路径中放置它所拥有的每个人都可以访问的持久文件。就是外存
+      也可以自定义:
+      For example:
+      下面路径即为 /storage/emulated/0/lhzw/bluetooth/db/YeWan.db  就是SD卡上的位置
+      -->
+    <!--<storage value="lhzw/bluetooth/db" />-->
+    <storage value="internal" />
+</litepal>

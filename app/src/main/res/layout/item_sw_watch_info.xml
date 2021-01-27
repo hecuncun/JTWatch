@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_ripple_bg">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginTop="5dp"
+        android:text="疆泰5X"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_watch_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginTop="1dp"
+        android:text="型号:@"
+        android:textColor="@color/item_watch_text"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_watch_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/iv_watch"
+        android:layout_below="@+id/tv_watch_type"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginTop="1dp"
+        android:text="应急领域:@"
+        android:textColor="@color/item_watch_text"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_watch_func"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_watch_note"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:text="模式搜救"
+        android:textColor="@color/item_watch_text"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/tv_watch_func" />
+
+    <ImageView
+        android:id="@+id/iv_watch"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_25"
+        android:src="@drawable/icon_watch" />
+
+</RelativeLayout>

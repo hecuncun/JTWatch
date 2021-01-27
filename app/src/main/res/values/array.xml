@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="heart_rate_types">
+        <item>极限</item>
+        <item>无氧</item>
+        <item>有氧</item>
+        <item>燃脂</item>
+        <item>热身</item>
+    </string-array>
+
+    <string-array name="sport_type_list">
+        <item>全部</item>
+        <item>徒步</item>
+        <item>跑步</item>
+        <item>室内跑</item>
+        <item>登山</item>
+        <item>骑车</item>
+    </string-array>
+</resources>

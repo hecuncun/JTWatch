@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_big"
+        android:textColor="@color/text_color"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="请输入昵称"/>
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:padding="@dimen/dp_5"
+        android:background="@drawable/bg_btn_orange_kuang"
+        android:hint="昵称"/>
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:padding="@dimen/dp_10"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:text="取消"/>
+        <View style="@style/verticalGrayLine"/>
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:padding="@dimen/dp_10"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/orange"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:text="确认"/>
+    </LinearLayout>
+
+</LinearLayout>
