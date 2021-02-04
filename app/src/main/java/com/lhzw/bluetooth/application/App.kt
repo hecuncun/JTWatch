@@ -82,7 +82,7 @@ class App : MultiDexApplication() {
         instance = this
         context = applicationContext
         SpiderMan.init(this)//奔溃日志
-        refWatcher = setupLeakCanary()
+        //refWatcher = setupLeakCanary()
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
         try{
             // 启动服务
