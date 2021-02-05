@@ -165,7 +165,7 @@ class LoginActivity : BaseActivity() {
                         http_token = it.getData()?.getToken()
 
                         Log.e("LOGINTIME", "时间   :   ${it.getData()?.getInfo()?.getCreateTime()}")
-                        registerTime = DateUtils.dateToLong(it.getData()?.getInfo()?.getCreateTime())
+                        registerTime = DateUtils.dateToLong(it.getData()?.getInfo()?.getCreateTime()!!)
                         showToast("登录成功")
                         if (nickName.isEmpty()) {//默认用户名为登录名
                             nickName = phone

@@ -39,7 +39,7 @@ class MonthFragment : BaseFragment() {
 
     private fun getOneMonthData() {
         Thread(Runnable {
-            val todayDataAndWeekdayBefore = DateUtils.getTodayDataAndWeekdayBefore()
+            val todayDataAndWeekdayBefore = DateUtils.todayDataAndWeekdayBefore
             val split = todayDataAndWeekdayBefore.split(",")
             val dataString = split[0]//2020-1-18
             val year = dataString.split("-")[0].toInt()
@@ -142,7 +142,7 @@ class MonthFragment : BaseFragment() {
     }
 
     private fun initBarChart(barChat: BarChart, mainColor: Int) {
-        val todayDataAndWeekdayBefore = DateUtils.getTodayDataAndWeekdayBefore()
+        val todayDataAndWeekdayBefore = DateUtils.todayDataAndWeekdayBefore
         val split = todayDataAndWeekdayBefore.split(",")
         val dataString = split[0]//20-1-18
         val year = dataString.split("-")[0].toInt()

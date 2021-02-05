@@ -114,7 +114,7 @@ class IntradaySportsActivity : BaseShareActivity(), View.OnClickListener {
         Log.e("Tag", "点击事件 ： $position")
     }
     override fun initView() {
-        tv_title.text=DateUtils.getTodayStringData()
+        tv_title.text=DateUtils.todayStringData
     }
 
     override fun initListener() {

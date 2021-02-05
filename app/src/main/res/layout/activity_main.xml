@@ -19,7 +19,7 @@
     <include
         android:id="@+id/title_toolbar" layout="@layout/toolbar" />
 
-    <View style="@style/horizontalOrangeLine" />
+<!--    <View style="@style/horizontalOrangeLine" />-->
 
 
 <!--    <android.support.design.widget.BottomNavigationView-->
@@ -38,9 +38,9 @@
     <LinearLayout
         android:id="@+id/ll_navigation"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bg_shape_navigation_up_circular"
+        android:background="@color/white"
         android:weightSum="5">
 
         <LinearLayout
@@ -53,11 +53,12 @@
 
             <ImageView
                 android:id="@+id/iv_home"
-                android:layout_width="@dimen/dp_25"
-                android:layout_height="@dimen/dp_25"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/home_selected" />
 
             <TextView
+                android:layout_marginTop="4dp"
                 android:id="@+id/tv_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,11 +79,12 @@
 
             <ImageView
                 android:id="@+id/iv_sport"
-                android:layout_width="@dimen/dp_23"
-                android:layout_height="@dimen/dp_23"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/sports_unselected" />
 
             <TextView
+                android:layout_marginTop="4dp"
                 android:id="@+id/tv_sport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,6 +118,7 @@
                 android:src="@drawable/setting_unselected" />
 
             <TextView
+                android:layout_marginTop="4dp"
                 android:id="@+id/tv_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,6 +143,7 @@
                 android:src="@drawable/me_unselected" />
 
             <TextView
+                android:layout_marginTop="4dp"
                 android:id="@+id/tv_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,20 +159,25 @@
 
     <LinearLayout
         android:id="@+id/ll_watch"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="32dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="13dp"
-        android:background="@drawable/bg_shape_watch"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_watch"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="@drawable/bg_selector_watch_frag" />
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+           android:src="@drawable/ic_tai_normal"/>
+        <TextView
+           android:layout_marginTop="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手表"
+            android:textColor="@color/tab_unselected"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -94,7 +94,7 @@ class SharePosterActivity : AppCompatActivity(), View.OnClickListener, View.OnTo
     private fun initData() {
         GlideUtils.showCircleWithBorder(iv_head_photo, photoPath, R.drawable.pic_head, resources.getColor(R.color.white))
         tv_name.text = nickName
-        tv_time.text = DateUtils.getTodayStringData()
+        tv_time.text = DateUtils.todayStringData
         val bg_bitmap = intent.getSerializableExtra("bg_bitmap")!! as ShareBgBean
         if (bg_bitmap.path == null || "".equals(bg_bitmap.path)) {
             val bitmap = BitmapFactory.decodeResource(resources, R.drawable.icon_share_default)

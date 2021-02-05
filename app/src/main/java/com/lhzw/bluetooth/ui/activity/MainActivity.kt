@@ -9,7 +9,6 @@ import android.content.*
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.os.PowerManager
 import android.provider.Settings
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
@@ -35,6 +34,7 @@ import com.lhzw.bluetooth.ui.fragment.HomeFragment
 import com.lhzw.bluetooth.ui.fragment.MineFragment
 import com.lhzw.bluetooth.ui.fragment.SettingFragment
 import com.lhzw.bluetooth.ui.fragment.SportsFragment
+import com.lhzw.bluetooth.ui.fragment.guard.GuardFragment
 import com.lhzw.bluetooth.uitls.BaseUtils
 import com.lhzw.bluetooth.uitls.KeepLiveUtil
 import com.lhzw.bluetooth.uitls.Preference
@@ -54,15 +54,17 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
     private val FRAGMENT_HOME = 0x01
     private val FRAGMENT_SPORTS = 0X02
     private val FRAGMENT_SETTING = 0X03
+    private val FRAGMENT_GUARD = 0x00
 
     // private val FRAGMENT_CONNECT = 0X04
     private val FRAGMENT_MINE = 0X05
 
-    private var mIndex = FRAGMENT_HOME
+    private var mIndex = FRAGMENT_GUARD
 
     private var mHomeFragment: HomeFragment? = null
     private var mSportsFragment: SportsFragment? = null
     private var mSettingFragment: SettingFragment? = null
+    private var mGuardFragment : GuardFragment?=null
 
     // private var mConnectFragment: ConnectFragment? = null
     private var mMineFragment: MineFragment? = null
@@ -160,7 +162,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
 
     }
 
-    private var wakeLock: PowerManager.WakeLock? = null
+ //   private var wakeLock: PowerManager.WakeLock? = null
     //==================================================扫描操作START==========
 //    private var isScanning = false  //是否正在扫描
 //    private val SCAN_DURATION: Long = 30000//扫描时长10s
@@ -470,13 +472,25 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
         val transaction = supportFragmentManager.beginTransaction()
 //        hideFragment(transaction)
         mIndex = index
+        toolbar.visibility = View.GONE
         toolbar_right_img.visibility = View.GONE
         toolbar_left_img.visibility = View.GONE
         toolbar_right_tv.visibility = View.GONE
         // tv_sync.visibility = View.GONE
         im_back.visibility = View.GONE
         when (index) {
+            FRAGMENT_GUARD->{
+                if (mGuardFragment == null) {
+                    mGuardFragment = GuardFragment.getInstance()
+                    currentFragment = mGuardFragment
+                    transaction.add(R.id.container, mGuardFragment!!, "guard")
+                } else {
+                    transaction.hide(currentFragment!!).show(mGuardFragment!!)
+                }
+                currentFragment = mGuardFragment
+            }
             FRAGMENT_HOME -> {
+                toolbar.visibility = View.VISIBLE
                 toolbar_title.text = getString(com.lhzw.bluetooth.R.string.main_home)
                 toolbar_right_img.visibility = View.VISIBLE
                 toolbar_right_img.setImageResource(if (state) com.lhzw.bluetooth.R.drawable.icon_ble_open else com.lhzw.bluetooth.R.drawable.icon_ble_close)
@@ -519,6 +533,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
             }
 
             FRAGMENT_SPORTS -> {
+                toolbar.visibility = View.VISIBLE
                 toolbar_title.text = getString(com.lhzw.bluetooth.R.string.main_sport_record)
                 if (mSportsFragment == null) {
                     mSportsFragment = SportsFragment.getInstance()
@@ -530,6 +545,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
             }
 
             FRAGMENT_SETTING -> {
+                toolbar.visibility = View.VISIBLE
                 toolbar_title.text = getString(com.lhzw.bluetooth.R.string.main_setting)
                 toolbar_right_img.visibility = View.VISIBLE
                 toolbar_right_img.setImageResource(R.mipmap.icon_set_save_normal)
@@ -559,6 +575,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
 //            }
 
             FRAGMENT_MINE -> {
+                toolbar.visibility = View.VISIBLE
                 toolbar_title.text = "我的信息"
                 toolbar_right_img.visibility = View.VISIBLE
                 toolbar_right_img.setImageResource(R.mipmap.icon_set_save_normal)
@@ -688,11 +705,11 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
                 iv_setting.setImageResource(R.drawable.setting_unselected)
                 iv_me.setImageResource(R.drawable.me_unselected)
 
-                tv_home.setTextColor(getColor(R.color.white))
+                //tv_home.setTextColor(getColor(R.color.white))
                 tv_sport.setTextColor(getColor(R.color.tab_unselected))
                 tv_setting.setTextColor(getColor(R.color.tab_unselected))
                 tv_me.setTextColor(getColor(R.color.tab_unselected))
-                showFragment(FRAGMENT_HOME)
+                showFragment(FRAGMENT_GUARD)
                 tapId = Constants.TAP_HOME;
             }
             R.id.ll_sport -> {
@@ -709,7 +726,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
                 iv_me.setImageResource(R.drawable.me_unselected)
 
                 tv_home.setTextColor(getColor(R.color.tab_unselected))
-                tv_sport.setTextColor(getColor(R.color.white))
+               // tv_sport.setTextColor(getColor(R.color.white))
                 tv_setting.setTextColor(getColor(R.color.tab_unselected))
                 tv_me.setTextColor(getColor(R.color.tab_unselected))
                 showFragment(FRAGMENT_SPORTS)
@@ -736,7 +753,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
 
                 tv_home.setTextColor(getColor(R.color.tab_unselected))
                 tv_sport.setTextColor(getColor(R.color.tab_unselected))
-                tv_setting.setTextColor(getColor(R.color.white))
+               // tv_setting.setTextColor(getColor(R.color.white))
                 tv_me.setTextColor(getColor(R.color.tab_unselected))
                 showFragment(FRAGMENT_SETTING)
                 tapId = Constants.TAP_SETTING;
@@ -759,7 +776,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
                 tv_home.setTextColor(getColor(R.color.tab_unselected))
                 tv_sport.setTextColor(getColor(R.color.tab_unselected))
                 tv_setting.setTextColor(getColor(R.color.tab_unselected))
-                tv_me.setTextColor(getColor(R.color.white))
+                //tv_me.setTextColor(getColor(R.color.white))
                 showFragment(FRAGMENT_MINE)
                 tapId = Constants.TAP_ME;
             }

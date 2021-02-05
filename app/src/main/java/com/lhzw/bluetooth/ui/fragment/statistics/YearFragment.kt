@@ -54,7 +54,7 @@ class YearFragment:BaseFragment() {
     private fun getOneYearData() {
         Thread(Runnable {
             //先算当前的月步数和cal
-            val todayDataAndWeekdayBefore = DateUtils.getTodayDataAndWeekdayBefore()
+            val todayDataAndWeekdayBefore = DateUtils.todayDataAndWeekdayBefore
             val split = todayDataAndWeekdayBefore.split(",")
             val dataString = split[0]//2020-1-18
             val year = dataString.split("-")[0].toInt()

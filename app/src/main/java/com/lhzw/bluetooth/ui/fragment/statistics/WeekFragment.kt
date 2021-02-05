@@ -44,7 +44,7 @@ class WeekFragment : BaseFragment() {
     }
     private fun getOneWeekData() {
         Thread(Runnable {
-            val todayDataAndWeekdayBefore = DateUtils.getTodayDataAndWeekdayBefore()//2020-7-7,1
+            val todayDataAndWeekdayBefore = DateUtils.todayDataAndWeekdayBefore//2020-7-7,1
             val split = todayDataAndWeekdayBefore.split(",")
             val dataString =split[0]//20-1-18
             val days=split[1].toInt()//前面第几天是周一

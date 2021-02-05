@@ -74,6 +74,7 @@ object Constants {
     const val LAST_CONNECTED_ADDRESS = "last_connected_address"
     const val AUTO_CONNECT = "auto_connect"
     const val ACCEPT_MSG = "accept_msg"
+    const val GUARD_RUNNING="guard_running"
 
     const val FILTER_CONTER = 4
 
