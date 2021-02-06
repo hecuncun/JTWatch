@@ -144,6 +144,8 @@
         <activity android:name=".ui.activity.login.ResetPwdSuccessActivity" />
         <activity android:name=".ui.activity.web.WebViewActivity" />
         <activity android:name=".ui.activity.UserAgreementActivity" />
+        <activity android:name=".ui.fragment.guard.GuardSettingActivity" />
+        <activity android:name=".ui.fragment.guard.GuardRunningMapActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

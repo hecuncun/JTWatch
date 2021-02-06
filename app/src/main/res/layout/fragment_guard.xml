@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools"
     android:background="@color/color_white_F3F3F4">
 
     <ImageView
@@ -11,7 +12,6 @@
         android:layout_height="45dp"
         android:layout_margin="12dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
-        android:text="姓名"
+        tool:text="姓名"
         android:textColor="@color/text_color_gray"
         android:textSize="@dimen/sp_16"
         android:textStyle="bold"
@@ -32,13 +32,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="登录126天"
+        tool:text="登录126天"
         android:textColor="@color/color_gray_999999"
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="@+id/tv_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
     <ImageView
+        android:id="@+id/iv_ble_state"
         android:layout_width="18dp"
         android:layout_height="27dp"
         android:layout_marginTop="22dp"

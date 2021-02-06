@@ -160,6 +160,50 @@ object DateUtils {
         return sb.toString()
     }
 
+
+    /**
+     * 时间差转 时分秒
+     */
+    fun longTimeToHMS(ms: Long): String {
+        val ss = 1000
+        val mi = ss * 60
+        val hh = mi * 60
+        val dd = hh * 24
+        val day = ms / dd
+        val hour = (ms - day * dd) / hh
+        val minute = (ms - day * dd - hour * hh) / mi
+        val second = (ms - day * dd - hour * hh - minute * mi) / ss
+        val milliSecond = ms - day * dd - hour * hh - minute * mi - second * ss
+        val sb = StringBuffer()
+        if (day > 0) {
+            sb.append(day.toString() + "天")
+        }
+        if (hour > -1) {
+            if (hour<10){
+                sb.append("0")
+            }
+            sb.append("$hour:")
+        }
+        if (minute > -1) {
+            if (minute<10){
+                sb.append("0")
+            }
+            sb.append("$minute:")
+        }
+        if (second > -1) {
+            if (second<10){
+                sb.append("0")
+            }
+            sb.append("$second")
+        }
+//        if (milliSecond > 0) {
+//            sb.append(milliSecond.toString() + "毫秒")
+//        }
+        return sb.toString()
+    }
+
+
+
     /**
      * 获取明天的日期
      */

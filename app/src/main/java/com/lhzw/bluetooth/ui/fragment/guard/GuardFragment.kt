@@ -1,5 +1,9 @@
 package com.lhzw.bluetooth.ui.fragment.guard
 
+import android.content.Intent
+import android.os.CountDownTimer
+import android.os.SystemClock
+import android.util.Log
 import android.view.View
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -14,7 +18,9 @@ import com.lhzw.bluetooth.bean.CurrentDataBean
 import com.lhzw.bluetooth.bean.DailyInfoDataBean
 import com.lhzw.bluetooth.bus.RxBus
 import com.lhzw.bluetooth.constants.Constants
+import com.lhzw.bluetooth.event.ConnectEvent
 import com.lhzw.bluetooth.event.HideDialogEvent
+import com.lhzw.bluetooth.event.RefreshGuardState
 import com.lhzw.bluetooth.event.SyncDataEvent
 import com.lhzw.bluetooth.ext.showToast
 import com.lhzw.bluetooth.glide.GlideUtils
@@ -40,13 +46,31 @@ import kotlin.collections.ArrayList
  */
 class GuardFragment:BaseFragment() {
     private var syncTime: String by Preference(Constants.SYNC_TIME, "")//最近同步时间
-    private var guardRunning: Boolean by Preference(Constants.GUARD_RUNNING, false)//守护开启状态
+    private var guardEndTime: Long by Preference(Constants.GUARD_END_TIME, 0)//守护开启状态
     private var registerTime: Long? by Preference(Constants.REGISTERTIME, 0)//注册时间
     override fun useEventBus() = true
     override fun attachLayoutRes(): Int= R.layout.fragment_guard
 
     override fun initView(view: View) {
+
+        if (connectState){
+            iv_ble_state.setImageResource(R.drawable.ic_ble_selected)
+        }else{
+            iv_ble_state.setImageResource(R.drawable.ic_ble_normal)
+        }
+
         iv_guard_start.setOnClickListener {
+            if (System.currentTimeMillis()<guardEndTime){
+                //守护中...
+                Intent(requireContext(),GuardRunningMapActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }else{
+                //守护设置页...
+                Intent(requireContext(),GuardSettingActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }
 
         }
     }
@@ -62,6 +86,39 @@ class GuardFragment:BaseFragment() {
         initLineChar(step_line_chart)
         initLineChar(cal_line_chart)
         getOneWeekData()
+
+        //显示守护倒计时
+        refreshGuardState()
+    }
+   private var countDownTimer:CountDownTimer?=null
+    private fun refreshGuardState() {
+        countDownTimer?.cancel()
+        if (System.currentTimeMillis() < guardEndTime) {
+            tv_state_tip_title.text = "守护时间剩余"
+            tv_guard_state.text = "已开启"
+            iv_guard_start.setImageResource(R.drawable.ic_guard_btn_open)
+            //守护开启中
+            countDownTimer = object : CountDownTimer(guardEndTime - System.currentTimeMillis(), 1000) {
+                override fun onTick(p0: Long) {
+                    tv_state_tip_content.text = DateUtils.longTimeToHMS(p0)
+                }
+
+                override fun onFinish() {
+                    tv_state_tip_title.text = "点击下方红色按钮"
+                    tv_state_tip_content.text = "开启守护状态"
+                    tv_guard_state.text = "未开启"
+                    iv_guard_start.setImageResource(R.drawable.ic_guard_btn_close)
+                }
+
+            }
+            countDownTimer?.start()
+        } else {
+            iv_guard_start.setImageResource(R.drawable.ic_guard_btn_close)
+            tv_state_tip_title.text = "点击下方红色按钮"
+            tv_state_tip_content.text = "开启守护状态"
+            tv_guard_state.text = "未开启"
+        }
+
     }
 
     //初始化图表
@@ -288,7 +345,26 @@ class GuardFragment:BaseFragment() {
 
     }
 
+    //蓝牙连接状态变化的event
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onWatchConnectChanged(event: ConnectEvent) {
+        if (event.isConnected) {//已连接
+            iv_ble_state.setImageResource(R.drawable.ic_ble_selected)
+        } else {//已断开显示UI布局
+            iv_ble_state.setImageResource(R.drawable.ic_ble_normal)
+        }
+    }
 
+    //守护状态刷新
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onRefreshGuardState(e: RefreshGuardState){
+        refreshGuardState()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        countDownTimer?.cancel()
+    }
 
     companion object{
         fun getInstance():GuardFragment = GuardFragment()

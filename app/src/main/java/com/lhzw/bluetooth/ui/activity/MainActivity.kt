@@ -288,8 +288,9 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onWatchConnectChanged(event: ConnectEvent) {
         if (event.isConnected) {//已连接
-            Logger.e("收到同步数据的EVENT")
-            //  loadingView?.setLoadingTitle("同步数据中...")
+            iv_watch.setImageResource(R.drawable.ic_tai_selected)
+        }else{
+            iv_watch.setImageResource(R.drawable.ic_tai_normal)
         }
     }
 
@@ -405,7 +406,11 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
         //初始化dialog
         saveChangeDialog= SaveChangeDialog(this)
 
-
+        if (connectState){
+            iv_watch.setImageResource(R.drawable.ic_tai_selected)
+        }else{
+            iv_watch.setImageResource(R.drawable.ic_tai_normal)
+        }
 
 //        myBleManager = BleManager(this)
 //        myBleManager!!.setGattCallbacks(this)
@@ -705,7 +710,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
                 iv_setting.setImageResource(R.drawable.setting_unselected)
                 iv_me.setImageResource(R.drawable.me_unselected)
 
-                //tv_home.setTextColor(getColor(R.color.white))
+                tv_home.setTextColor(getColor(R.color.tab_unselected))
                 tv_sport.setTextColor(getColor(R.color.tab_unselected))
                 tv_setting.setTextColor(getColor(R.color.tab_unselected))
                 tv_me.setTextColor(getColor(R.color.tab_unselected))

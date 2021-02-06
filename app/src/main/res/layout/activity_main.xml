@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="首页"
-                android:textColor="@color/white"
+                android:textColor="@color/tab_unselected"
                 android:textSize="12sp" />
 
 
