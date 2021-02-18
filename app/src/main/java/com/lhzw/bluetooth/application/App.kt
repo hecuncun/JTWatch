@@ -13,10 +13,12 @@ import com.lhzw.bluetooth.R
 import com.lhzw.bluetooth.constants.Constants
 import com.lhzw.bluetooth.service.BleConnectService
 import com.lhzw.bluetooth.service.BlutoothService
+import com.lhzw.bluetooth.service.GuardLocationService
 import com.lhzw.bluetooth.service.SmsAndPhoneService
 import com.lhzw.bluetooth.uitls.BaseUtils
 import com.lhzw.bluetooth.uitls.LogCatStrategy
 import com.lhzw.bluetooth.uitls.Preference
+import com.mapbox.mapboxsdk.Mapbox
 import com.orhanobut.logger.*
 import com.simple.spiderman.SpiderMan
 import com.squareup.leakcanary.LeakCanary
@@ -86,24 +88,30 @@ class App : MultiDexApplication() {
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
         try{
             // 启动服务
-
             if (!BaseUtils.isServiceRunning(Constants.SERVICE_PACKAGE)) {
                 startService(Intent(context, BlutoothService::class.java))
-                Log.e("tag","Application蓝牙服务")
+                Log.e("tag", "Application蓝牙服务")
             }
             //启动蓝牙连接服务
             if (!BaseUtils.isServiceRunning(Constants.BLE_CONNECT_SERVICE_PACKAGE)) {
                 startService(Intent(context, BleConnectService::class.java))
-                Log.e("tag","Application启动连接服务")
+                Log.e("tag", "Application启动连接服务")
             }
             //启动电话/短信监听服务
             if (!BaseUtils.isServiceRunning(Constants.SMS_AND_PHONE_SERVICE_PACKAGE)) {
                 startService(Intent(context, SmsAndPhoneService::class.java))
-                Log.e("tag","Application启动连接服务SmsAndPhoneService")
+                Log.e("tag", "Application启动连接服务SmsAndPhoneService")
             }
 
-        }catch (e:Exception){
-            Log.e("tag","APP第一次启动连接服务  异常")
+            //启动守护服务
+            if (!BaseUtils.isServiceRunning(Constants.GUARD_LOCATION_SERVICE)) {
+                startService(Intent(context, GuardLocationService::class.java))
+                Log.e("tag", "Application启动GuardLocationService")
+            }
+
+
+        }catch (e: Exception){
+            Log.e("tag", "APP第一次启动连接服务  异常")
         }
 
         initLoggerConfig()
@@ -114,8 +122,7 @@ class App : MultiDexApplication() {
         //设置LOG开关，默认为false
         UMConfigure.setLogEnabled(true);
         // 分享权限
-        UMConfigure.init(this, "5dde2cda0cafb206e4000262"
-                , getString(R.string.app_name), UMConfigure.DEVICE_TYPE_PHONE, "")
+        UMConfigure.init(this, "5dde2cda0cafb206e4000262", getString(R.string.app_name), UMConfigure.DEVICE_TYPE_PHONE, "")
 
         PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
         PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com")
@@ -125,6 +132,8 @@ class App : MultiDexApplication() {
 
         //BUGly初始化
         CrashReport.initCrashReport(applicationContext, "9493728e5c", false)
+        //mapbox地图token
+        Mapbox.getInstance(this, resources.getString(R.string.accessToken))
     }
 
     private fun setupLeakCanary(): RefWatcher? {

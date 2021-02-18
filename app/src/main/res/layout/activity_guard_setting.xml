@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools"
     android:background="@color/white">
 
     <ImageView
@@ -39,8 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
         app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/color_white_F3F3F4"
+        app:cardElevation="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_logo">
@@ -111,45 +113,59 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        xmlns:mapbox="http://schemas.android.com/tools"
         android:id="@+id/card2"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:background="@color/white"
+        app:cardBackgroundColor="@color/color_white_F3F3F4"
         app:cardCornerRadius="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card1">
 
-        <ImageView
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:layout_margin="20dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_height="match_parent"
+            mapbox:mapbox_cameraZoom="17" />
+        <TextView
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/color_red_73418"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="当前位置"/>
     </android.support.v7.widget.CardView>
 
     <ImageView
-
         android:id="@+id/iv_loc"
         android:layout_width="24dp"
         android:layout_height="29dp"
-        android:layout_marginLeft="48dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_location"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_address"
         app:layout_constraintTop_toBottomOf="@id/card2" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_address"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="26dp"
-        android:text="广东  深圳  南山  西丽街道"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="16dp"
+        tool:text="广东  深圳  南山  西丽街道广东  深圳 广东  深圳  南山  西丽街道 南山  西丽街道"
         android:textColor="@color/color_gray_999999"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@id/iv_loc"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/iv_loc" />
 
     <TextView

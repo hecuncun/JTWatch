@@ -64,6 +64,7 @@ object Constants {
     const val SERVICE_PACKAGE = "com.lhzw.bluetooth.service.BlutoothService"
     const val SMS_AND_PHONE_SERVICE_PACKAGE = "com.lhzw.bluetooth.service.SmsAndPhoneService"
     const val BLE_CONNECT_SERVICE_PACKAGE = "com.lhzw.bluetooth.service.BleConnectService"
+    const val GUARD_LOCATION_SERVICE = "com.lhzw.bluetooth.service.GuardLocationService"
 
 
     const val CONNECT_STATE = "connect_state"
@@ -157,5 +158,7 @@ object Constants {
     const val VERIFY_TYPE_MODIFY_PASSWORD = 0x0001 // 更改密码
     const val APP_ID = "wx1fd7f0ff7df35c16"
     const val USER_ID = "wx17ab04a8ad941271"
+
+    const val LOCATION = "location"
 
 }

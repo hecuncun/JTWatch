@@ -29,6 +29,7 @@ import com.lhzw.bluetooth.event.*
 import com.lhzw.bluetooth.ext.showToast
 import com.lhzw.bluetooth.service.BleConnectService
 import com.lhzw.bluetooth.service.BlutoothService
+import com.lhzw.bluetooth.service.GuardLocationService
 import com.lhzw.bluetooth.service.SmsAndPhoneService
 import com.lhzw.bluetooth.ui.fragment.HomeFragment
 import com.lhzw.bluetooth.ui.fragment.MineFragment
@@ -451,6 +452,10 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
             startService(Intent(App.context, SmsAndPhoneService::class.java))
             Logger.e("重启SmsAndPhoneService")
         }
+     //启动守护服务
+        if (!BaseUtils.isServiceRunning(Constants.GUARD_LOCATION_SERVICE)) {
+            startService(Intent(App.context, GuardLocationService::class.java))
+         }
 
         //获取蓝牙状态
         bleManager = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager

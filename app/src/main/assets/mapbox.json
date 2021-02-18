@@ -1,0 +1,31 @@
+{
+  "version": 8,
+  "sprite": "https://pcq.rkpc.stats.gov.cn/static/map_formal/sprite/sprite",
+  "glyphs": "https://pcq.rkpc.stats.gov.cn/static/lib/jsDoc/{fontstack}/{range}.pbf",
+  "sources": {
+    "URL_VECTOR_ANNOTATION_CHINESE_2000": {
+      "tiles": ["http://t0.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=f27028786bac31816fc36307e99f7b2f"],
+      "type": "raster",
+      "tileSize": 256
+    },
+    "URL_VECTOR_2000": {
+      "tiles": ["http://t0.tianditu.gov.cn/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=f27028786bac31816fc36307e99f7b2f"],
+      "type": "raster",
+      "tileSize": 256
+    }
+  },
+  "layers": [
+    {
+      "id": "URL_VECTOR_ANNOTATION_CHINESE_2000",
+      "type": "raster",
+      "source": "URL_VECTOR_ANNOTATION_CHINESE_2000",
+      "maxzoom": 22
+    },
+    {
+      "id": "URL_VECTOR_2000",
+      "type": "raster",
+      "source": "URL_VECTOR_2000",
+      "maxzoom": 22
+    }
+  ]
+}
