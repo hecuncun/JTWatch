@@ -4,12 +4,12 @@
   "glyphs": "https://pcq.rkpc.stats.gov.cn/static/lib/jsDoc/{fontstack}/{range}.pbf",
   "sources": {
     "URL_VECTOR_ANNOTATION_CHINESE_2000": {
-      "tiles": ["http://t0.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=f27028786bac31816fc36307e99f7b2f"],
+      "tiles": ["http://t0.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=492554338e30f9af25c50c6b52ac2572"],
       "type": "raster",
       "tileSize": 256
     },
     "URL_VECTOR_2000": {
-      "tiles": ["http://t0.tianditu.gov.cn/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=f27028786bac31816fc36307e99f7b2f"],
+      "tiles": ["http://t0.tianditu.gov.cn/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=492554338e30f9af25c50c6b52ac2572"],
       "type": "raster",
       "tileSize": 256
     }

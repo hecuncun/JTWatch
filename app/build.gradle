@@ -153,5 +153,5 @@ dependencies {
     implementation ('com.gxsn.mapsdk:mapbox:7.5.1'){
         transitive = true
     }
-
+    implementation project(':plugin-annotation')
 }

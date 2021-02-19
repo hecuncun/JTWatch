@@ -12,7 +12,7 @@
        定义数据库的版本。
        每次你想要升级数据库，修改映射标记中定义的版本值+ 1，数据库升级将会被自动处理。
        -->
-    <version value="1" />
+    <version value="2" />
 
     <!--
         用映射标签指定的modle在表中定义数据模型.
@@ -33,6 +33,7 @@
         <mapping class="com.lhzw.bluetooth.bean.ClimbingSportBean" />
         <mapping class="com.lhzw.bluetooth.bean.FlatSportBean" />
         <mapping class="com.lhzw.bluetooth.bean.SportDetailInfobean" />
+        <mapping class="com.lhzw.bluetooth.bean.GuardLocationBean"/>
     </list>
 
     <!--

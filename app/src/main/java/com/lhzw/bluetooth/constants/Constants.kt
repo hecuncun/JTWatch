@@ -76,6 +76,7 @@ object Constants {
     const val AUTO_CONNECT = "auto_connect"
     const val ACCEPT_MSG = "accept_msg"
     const val GUARD_END_TIME="guard_end_time"
+    const val GUARD_ID="guard_id"
 
     const val FILTER_CONTER = 4
 

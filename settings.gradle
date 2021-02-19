@@ -1,1 +1,2 @@
+include ':plugin-annotation'
 include ':app', ':MPChartLib', ':toastex', ':ble', ':scanner', ':library',':pickerview', ':wheelview'

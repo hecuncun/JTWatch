@@ -1,7 +1,15 @@
 package com.lhzw.bluetooth.base
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import com.mapbox.android.core.location.LocationEngine
+import com.mapbox.android.core.location.LocationEngineRequest
 import com.mapbox.mapboxsdk.maps.MapView
+import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.maps.Style
+import kotlinx.android.synthetic.main.activity_guard_setting.*
 
 /**
  * Created by heCunCun on 2021/2/18

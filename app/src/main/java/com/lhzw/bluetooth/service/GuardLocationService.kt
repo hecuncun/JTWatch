@@ -9,15 +9,14 @@ import android.os.IBinder
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
 import android.util.Log
+import com.lhzw.bluetooth.bean.GuardLocationBean
 import com.lhzw.bluetooth.constants.Constants
-import com.lhzw.bluetooth.event.CompleteGuardEvent
 import com.lhzw.bluetooth.event.RefreshGuardState
-import com.lhzw.bluetooth.event.StartGuardEvent
+import com.lhzw.bluetooth.event.RefreshMapLocEvent
 import com.lhzw.bluetooth.ext.showToast
 import com.lhzw.bluetooth.uitls.DateUtils
 import com.lhzw.bluetooth.uitls.Preference
 import com.mapbox.android.core.location.*
-import com.mapbox.mapboxsdk.geometry.LatLng
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -27,22 +26,24 @@ import org.greenrobot.eventbus.ThreadMode
  */
 class GuardLocationService : Service(), LocationEngineCallback<LocationEngineResult> {
 
-    companion object{
+    companion object {
         val TAG = "GuardLocationService"
     }
+
     private var guardEndTime: Long by Preference(Constants.GUARD_END_TIME, 0)//守护结束时间
+    private var gid: String by Preference(Constants.GUARD_ID, "0")//守护结束id
 
     //位置更新之间的距离
     private val DEFAULT_DISPLACEMENT = 5.0f
 
     //位置更新的最大等待时间（以毫秒为单位）。
-    private val DEFAULT_MAX_WAIT_TIME = 310000L
+    private val DEFAULT_MAX_WAIT_TIME = 31000L
 
     //位置更新的最快间隔（以毫秒为单位）
-    private val DEFAULT_FASTEST_INTERVAL = 300000L
+    private val DEFAULT_FASTEST_INTERVAL = 30000L
 
     //位置更新之间的默认间隔
-    private val DEFAULT_INTERVAL = 300000L
+    private val DEFAULT_INTERVAL = 30000L
 
     private var mLocationEngine: LocationEngine? = null
 
@@ -78,8 +79,8 @@ class GuardLocationService : Service(), LocationEngineCallback<LocationEngineRes
             //守护开启中
             countDownTimer = object : CountDownTimer(guardEndTime - System.currentTimeMillis(), 1000) {
                 override fun onTick(p0: Long) {
-                   val time =    DateUtils.longTimeToHMS(p0)
-                    Log.e(TAG,"$time")
+                    val time = DateUtils.longTimeToHMS(p0)
+                    Log.e(TAG, "$time")
                 }
 
                 override fun onFinish() {
@@ -106,10 +107,11 @@ class GuardLocationService : Service(), LocationEngineCallback<LocationEngineRes
 
     override fun onSuccess(result: LocationEngineResult) {
         result.lastLocation?.run {
-            Log.e(TAG, "lat= $latitude,lon =$longitude")
-            val currentLatLng = LatLng(latitude, longitude)
-            //保存到服务器
-
+            Log.e(TAG, "刷新定位点 lat= $latitude,lon =$longitude")
+            //保存到服务器和本地数据库
+            val guardLocationBean = GuardLocationBean(gid, latitude, longitude, System.currentTimeMillis())
+            guardLocationBean.save()
+            EventBus.getDefault().post(RefreshMapLocEvent())
         }
 
     }
@@ -132,15 +134,7 @@ class GuardLocationService : Service(), LocationEngineCallback<LocationEngineRes
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun startGuardEvent(e: RefreshGuardState){
+    fun refreshGuardEvent(e: RefreshGuardState) {
         refreshGuardState()
-        Log.e(TAG, "开始定位")
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun completeGuardEvent(e:CompleteGuardEvent){
-        guardEndTime = 0 //停止计时
-        refreshGuardState()
-        Log.e(TAG, "停止定位")
     }
 }

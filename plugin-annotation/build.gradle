@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 27
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    configurations {
+        javadocDeps
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues true
+    }
+    buildTypes {
+        compileOptions {
+        }
+        lintOptions {
+        }
+    }
+}
+
+dependencies {
+//    implementation dependenciesList.supportAppcompatV7
+//    implementation dependenciesList.mapboxMapSdk
+//    javadocDeps dependenciesList.mapboxMapSdk
+//    testImplementation dependenciesList.junit
+//    testImplementation dependenciesList.mockito
+//    testImplementation dependenciesList.robolectric
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.google.code.gson:gson:2.6.2'
+//    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:7.5.0-beta.1') {
+//        transitive = true
+//    }
+    implementation('com.gxsn.mapsdk:mapbox:7.5.1') {
+        transitive = true
+    }
+}
+

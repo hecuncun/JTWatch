@@ -35,6 +35,7 @@ import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random.Default.nextInt
 
 
 /**
@@ -43,7 +44,8 @@ import java.util.concurrent.TimeUnit
 class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEngineResult> {
     private var guardTime = 60//分钟
     private var guardEndTime: Long by Preference(Constants.GUARD_END_TIME, 0)//守护结束时间
-    private var mapBoxMap:MapboxMap?=null
+    private var gid:  String by Preference(Constants.GUARD_ID, "0")//守护结束id
+    private var mapBoxMap: MapboxMap?=null
 
     //位置更新之间的距离
     private val DEFAULT_DISPLACEMENT = 5.0f
@@ -86,11 +88,7 @@ class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEn
         super.onPause()
         //结束请求位置
             mLocationEngine?.removeLocationUpdates(this)
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 0);
-            return
-        }
-        mLocationEngine?.requestLocationUpdates(mLocationEngineRequest, this, Looper.getMainLooper())
+
     }
 
 
@@ -187,11 +185,13 @@ class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEn
 
         iv_start.setOnClickListener {
             //开始倒计时
-            finish()
+
             //设置记录开始守护的时间
             guardEndTime = System.currentTimeMillis() + guardTime * 60 * 1000
+            //此处需要请求服务器获取此次守护id,保存起来
+            gid = Random().nextInt(100).toString()
             EventBus.getDefault().post(RefreshGuardState())
-
+            finish()
         }
         iv_back.setOnClickListener {
             finish()
