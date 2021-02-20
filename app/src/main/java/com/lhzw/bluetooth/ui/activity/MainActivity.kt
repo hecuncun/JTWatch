@@ -93,7 +93,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
     @SuppressLint("InvalidWakeLockTag")
     override fun initData() {
         //  Manifest.permission.READ_PHONE_NUMBERS, Manifest.permission.READ_PHONE_NUMBERS,
-        if (checkPermissions(arrayOf(Manifest.permission.READ_CALL_LOG,
+        if (checkPermissions(arrayOf(
                         Manifest.permission.READ_PHONE_STATE,
                         Manifest.permission.READ_SMS,
                         Manifest.permission.RECEIVE_MMS,
@@ -106,7 +106,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
                         Manifest.permission.READ_EXTERNAL_STORAGE))) {
             Logger.e("已获取监听电话短信权限")
         } else {
-            requestPermission(arrayOf(Manifest.permission.READ_CALL_LOG,
+            requestPermission(arrayOf(
                     Manifest.permission.READ_PHONE_STATE,
                     Manifest.permission.READ_SMS,
                     Manifest.permission.RECEIVE_MMS,
@@ -766,7 +766,7 @@ class MainActivity : BaseActivity(), CancelAdapt, View.OnClickListener {
                // tv_setting.setTextColor(getColor(R.color.white))
                 tv_me.setTextColor(getColor(R.color.tab_unselected))
                 showFragment(FRAGMENT_SETTING)
-                tapId = Constants.TAP_SETTING;
+                tapId = Constants.TAP_SETTING
                 select=0
             }
             R.id.ll_me -> {//我的

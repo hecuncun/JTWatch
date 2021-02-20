@@ -120,15 +120,15 @@ class App : MultiDexApplication() {
         //初始化二维码扫描
         // ZXingLibrary.initDisplayOpinion(this)
         //设置LOG开关，默认为false
-        UMConfigure.setLogEnabled(true);
+      //  UMConfigure.setLogEnabled(true);
         // 分享权限
-        UMConfigure.init(this, "5dde2cda0cafb206e4000262", getString(R.string.app_name), UMConfigure.DEVICE_TYPE_PHONE, "")
+        //UMConfigure.init(this, "5dde2cda0cafb206e4000262", getString(R.string.app_name), UMConfigure.DEVICE_TYPE_PHONE, "")
 
-        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
-        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com")
-        PlatformConfig.setQQZone("1110222616", "Q59lLBkXbLssHlK")
+        //PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
+      //  PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com")
+      //  PlatformConfig.setQQZone("1110222616", "Q59lLBkXbLssHlK")
 
-        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+       // MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
 
         //BUGly初始化
         CrashReport.initCrashReport(applicationContext, "9493728e5c", false)

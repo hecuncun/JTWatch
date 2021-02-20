@@ -1,6 +1,6 @@
 package com.lhzw.bluetooth.ui.fragment.guard
 
-import android.hardware.camera2.params.InputConfiguration
+import android.content.Intent
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
@@ -38,6 +38,7 @@ class GuardRunningMapActivity : BaseMapActivity() {
     private var markerList = mutableListOf<MarkerOptions>()//定位点集合
     private var latLngList = mutableListOf<LatLng>()
     private var trackLineOptions: TrackLineOptions? = null
+    private var isLoaded = false
     override fun useEventBus(): Boolean = true
 
     override fun attachLayoutRes(): Int = R.layout.activity_guard_running_map
@@ -59,6 +60,7 @@ class GuardRunningMapActivity : BaseMapActivity() {
                 isDeselectMarkersOnTap = true
             }
             drawLocMarker()
+            isLoaded =true
         }
 
 
@@ -75,7 +77,8 @@ class GuardRunningMapActivity : BaseMapActivity() {
         val guardLocList = LitePal.where("gid=?", gid).find(GuardLocationBean::class.java)
         for (guardLocationBean in guardLocList) {
             val latLng = LatLng(guardLocationBean.lat, guardLocationBean.lon)
-            val marker = MarkerOptions().position(latLng).title("").snippet("").icon(IconFactory.getInstance(this).fromResource(R.drawable.ic_loc_marker))
+            val marker = MarkerOptions().position(latLng).title("").snippet("")
+                    //.icon(IconFactory.getInstance(this).fromResource(R.drawable.ic_loc_marker))
             latLngList.add(latLng)
             markerList.add(marker)
         }
@@ -102,6 +105,11 @@ class GuardRunningMapActivity : BaseMapActivity() {
             refreshGuardState()
             iv_finish.visibility = View.GONE
             EventBus.getDefault().post(RefreshGuardState())
+        }
+        iv_share.setOnClickListener {
+            Intent(this,GuardShareMapActivity::class.java).apply {
+                startActivity(this)
+            }
         }
     }
 
@@ -139,7 +147,10 @@ class GuardRunningMapActivity : BaseMapActivity() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun refreshLocMap(e: RefreshMapLocEvent) {
-        Log.e("GuardRunningMapActivity", "刷新map页面")
-        drawLocMarker()
+        if (isLoaded){
+            Log.e("GuardRunningMapActivity", "刷新map页面")
+            drawLocMarker()
+        }
+
     }
 }

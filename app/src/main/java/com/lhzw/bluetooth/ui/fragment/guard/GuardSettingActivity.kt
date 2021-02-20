@@ -61,6 +61,8 @@ class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEn
 
     private var mLocationEngine: LocationEngine? = null
 
+    private var isLoaded = false
+
     private val mLocationEngineRequest = LocationEngineRequest.Builder(DEFAULT_INTERVAL) //要求最准确的位置
             .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY) //请求经过电池优化的粗略位置
             //            .setPriority(LocationEngineRequest.PRIORITY_BALANCED_POWER_ACCURACY)
@@ -111,6 +113,7 @@ class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEn
                 isTiltGesturesEnabled = false
                 isDeselectMarkersOnTap = true
             }
+            isLoaded=true
         }
 
 
@@ -144,7 +147,7 @@ class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEn
 
     private fun stopAddOrSubtract() {
         if (scheduledExecutor != null) {
-            scheduledExecutor!!.shutdownNow();
+            scheduledExecutor!!.shutdownNow()
             scheduledExecutor = null
         }
     }
@@ -201,8 +204,9 @@ class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEn
     private var centerLatLon: LatLng?=null
     private var cerMarker: Marker?=null
     override fun onSuccess(result: LocationEngineResult) {
-        result.lastLocation?.run {
-           // Log.e("location","lat= $latitude,lon =$longitude")
+        if (isLoaded){
+            result.lastLocation?.run {
+                // Log.e("location","lat= $latitude,lon =$longitude")
                 mapBoxMap?.clear()
                 centerLatLon = LatLng(latitude, longitude)
                 cerMarker = mapBoxMap?.addMarker(MarkerOptions()
@@ -212,27 +216,29 @@ class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEn
                         .setPosition(centerLatLon!!))
 
                 val position = CameraPosition.Builder()
-                    .target(centerLatLon)
-                    .zoom(17.0)
-                    .tilt(20.0)
-                    .build()
+                        .target(centerLatLon)
+                        .zoom(17.0)
+                        .tilt(20.0)
+                        .build()
                 mapBoxMap?.animateCamera(CameraUpdateFactory.newCameraPosition(position), 2000)
-            //显示地名
-          val geoCoder = Geocoder(this@GuardSettingActivity, Locale.getDefault())
-          try {
-              val addressList = geoCoder.getFromLocation(latitude, longitude, 1)
-              val sb = StringBuilder()
-              if (addressList.isNotEmpty()){
-                  val address =  addressList[0]
-                  for (i in 0..address.maxAddressLineIndex){
-                      sb.append(address.getAddressLine(i))
-                  }
-                  tv_address.text = sb.toString()
-               //   Log.e("location","address =${sb}")
-              }
-          }catch (e:Exception){
-              e.printStackTrace()
-          }
+                //显示地名
+                val geoCoder = Geocoder(this@GuardSettingActivity, Locale.getDefault())
+                try {
+                    val addressList = geoCoder.getFromLocation(latitude, longitude, 1)
+                    val sb = StringBuilder()
+                    if (addressList.isNotEmpty()){
+                        val address =  addressList[0]
+                        for (i in 0..address.maxAddressLineIndex){
+                            sb.append(address.getAddressLine(i))
+                        }
+                        tv_address.text = sb.toString()
+                        //   Log.e("location","address =${sb}")
+                    }
+                }catch (e:Exception){
+                    e.printStackTrace()
+                }
+
+            }
 
 
         }

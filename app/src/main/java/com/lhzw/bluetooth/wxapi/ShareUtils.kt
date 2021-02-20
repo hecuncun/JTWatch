@@ -3,6 +3,7 @@ package com.lhzw.bluetooth.wxapi
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import com.lhzw.bluetooth.constants.Constants
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX
 import com.tencent.mm.opensdk.modelmsg.WXImageObject
@@ -22,6 +23,25 @@ object ShareUtils {
     fun shareImageToWx(mContext: Context, imagePath: String?, state: Int) {
         //创建WXImageObject对象，并设置文件路径
         val bitmap = BitmapFactory.decodeFile(imagePath)
+        val imgObj = WXImageObject(bitmap)
+        //创建WXMediaMessage对象，并包装创建WXImageObject对象
+        val msg = WXMediaMessage()
+        msg.mediaObject = imgObj
+        //压缩图像
+        val thumbBmp = Bitmap.createScaledBitmap(bitmap, 120, 120, true)
+        bitmap.recycle() //释放图像所占用的内存资源
+        msg.thumbData = bmpToByteArray(thumbBmp, true) //设置缩略图
+        val req = SendMessageToWX.Req()
+        req.transaction = buildTransaction("img")
+        req.message = msg
+        req.scene = if (state == 0) SendMessageToWX.Req.WXSceneSession else SendMessageToWX.Req.WXSceneTimeline
+        req.userOpenId = Constants.USER_ID
+        WXAPIFactory.createWXAPI(mContext, Constants.APP_ID).sendReq(req)
+    }
+
+    fun shareImageToWx(mContext: Context, bitmap:Bitmap, state: Int) {
+        //创建WXImageObject对象，并设置文件路径
+
         val imgObj = WXImageObject(bitmap)
         //创建WXMediaMessage对象，并包装创建WXImageObject对象
         val msg = WXMediaMessage()
