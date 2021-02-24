@@ -1,4 +1,4 @@
-package com.lhzw.bluetooth.ui.fragment.guard
+package com.lhzw.bluetooth.ui.guard
 
 import android.content.Intent
 import android.os.CountDownTimer
@@ -10,10 +10,10 @@ import com.lhzw.bluetooth.bean.GuardLocationBean
 import com.lhzw.bluetooth.constants.Constants
 import com.lhzw.bluetooth.event.RefreshGuardState
 import com.lhzw.bluetooth.event.RefreshMapLocEvent
+import com.lhzw.bluetooth.ext.showToast
 import com.lhzw.bluetooth.uitls.DateUtils
 import com.lhzw.bluetooth.uitls.Preference
 import com.lhzw.bluetooth.widget.map.TrackLineOptions
-import com.mapbox.mapboxsdk.annotations.IconFactory
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
@@ -32,6 +32,7 @@ import org.litepal.LitePal
  */
 class GuardRunningMapActivity : BaseMapActivity() {
     private var guardEndTime: Long by Preference(Constants.GUARD_END_TIME, 0)//守护开启状态
+    private var guardStartTime: Long by Preference(Constants.GUARD_START_TIME, 0)//守护开始时间
     private var countDownTimer: CountDownTimer? = null
     private var gid: String by Preference(Constants.GUARD_ID, "0")//守护结束id
     private var mapBoxMap: MapboxMap? = null
@@ -75,23 +76,36 @@ class GuardRunningMapActivity : BaseMapActivity() {
         trackLineOptions = TrackLineOptions(mapView, mapBoxMap)
         //查询定位点
         val guardLocList = LitePal.where("gid=?", gid).find(GuardLocationBean::class.java)
-        for (guardLocationBean in guardLocList) {
-            val latLng = LatLng(guardLocationBean.lat, guardLocationBean.lon)
-            val marker = MarkerOptions().position(latLng).title("").snippet("")
-                    //.icon(IconFactory.getInstance(this).fromResource(R.drawable.ic_loc_marker))
-            latLngList.add(latLng)
-            markerList.add(marker)
+        if (guardLocList.isNotEmpty()){
+            for (guardLocationBean in guardLocList) {
+                val latLng = LatLng(guardLocationBean.lat, guardLocationBean.lon)
+                val marker = MarkerOptions().position(latLng).title("").snippet("")
+                //.icon(IconFactory.getInstance(this).fromResource(R.drawable.ic_loc_marker))
+                latLngList.add(latLng)
+                markerList.add(marker)
+            }
+            mapBoxMap?.addMarkers(markerList)//画标记
+            trackLineOptions?.drawTrackLine(mapView, latLngList.toTypedArray())//划线
+            val latLng = LatLng(guardLocList.last().lat, guardLocList.last().lon)
+            Log.e("GuardRunningMapActivity", "lat =${latLng.latitude},Lng= ${latLng.longitude}")
+            //计算里程
+            var distance = 0
+            for (i in 0..(latLngList.size-2)){
+                val meter = latLngList[i].distanceTo(latLngList[i+1]).toInt()
+                distance += meter
+            }
+            tv_distance.text = distance.toString()
+            tv_duration.text = ((System.currentTimeMillis()-guardStartTime)/1000/60).toString()
+            val position = CameraPosition.Builder()
+                    .target(latLng)
+                    .zoom(17.0)
+                    .tilt(20.0)
+                    .build()
+            mapBoxMap?.animateCamera(CameraUpdateFactory.newCameraPosition(position), 2000)
+        }else{
+            showToast("获取位置中...")
         }
-        mapBoxMap?.addMarkers(markerList)//画标记
-        trackLineOptions?.drawTrackLine(mapView, latLngList.toTypedArray())//划线
-        val latLng = LatLng(guardLocList.last().lat, guardLocList.last().lon)
-        Log.e("GuardRunningMapActivity", "lat =${latLng.latitude},Lng= ${latLng.longitude}")
-        val position = CameraPosition.Builder()
-                .target(latLng)
-                .zoom(17.0)
-                .tilt(20.0)
-                .build()
-        mapBoxMap?.animateCamera(CameraUpdateFactory.newCameraPosition(position), 2000)
+
     }
 
     override fun initListener() {

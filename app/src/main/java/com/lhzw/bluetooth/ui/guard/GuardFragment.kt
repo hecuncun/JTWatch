@@ -1,9 +1,7 @@
-package com.lhzw.bluetooth.ui.fragment.guard
+package com.lhzw.bluetooth.ui.guard
 
 import android.content.Intent
 import android.os.CountDownTimer
-import android.os.SystemClock
-import android.util.Log
 import android.view.View
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -25,6 +23,7 @@ import com.lhzw.bluetooth.event.SyncDataEvent
 import com.lhzw.bluetooth.ext.showToast
 import com.lhzw.bluetooth.glide.GlideUtils
 import com.lhzw.bluetooth.service.BleConnectService
+import com.lhzw.bluetooth.ui.group.GroupManagerActivity
 import com.lhzw.bluetooth.uitls.DateUtils
 import com.lhzw.bluetooth.uitls.Preference
 import com.lhzw.bluetooth.uitls.XAxisValueFormatter
@@ -72,6 +71,12 @@ class GuardFragment:BaseFragment() {
                 }
             }
 
+        }
+
+        iv_map.setOnClickListener {
+            Intent(requireContext(),GroupManagerActivity::class.java).apply {
+                startActivity(this)
+            }
         }
     }
 

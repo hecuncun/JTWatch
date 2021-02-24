@@ -35,7 +35,7 @@ import com.lhzw.bluetooth.ui.fragment.HomeFragment
 import com.lhzw.bluetooth.ui.fragment.MineFragment
 import com.lhzw.bluetooth.ui.fragment.SettingFragment
 import com.lhzw.bluetooth.ui.fragment.SportsFragment
-import com.lhzw.bluetooth.ui.fragment.guard.GuardFragment
+import com.lhzw.bluetooth.ui.guard.GuardFragment
 import com.lhzw.bluetooth.uitls.BaseUtils
 import com.lhzw.bluetooth.uitls.KeepLiveUtil
 import com.lhzw.bluetooth.uitls.Preference

@@ -172,9 +172,11 @@
         <activity android:name=".ui.activity.login.ResetPwdSuccessActivity" />
         <activity android:name=".ui.activity.web.WebViewActivity" />
         <activity android:name=".ui.activity.UserAgreementActivity" />
-        <activity android:name=".ui.fragment.guard.GuardSettingActivity" />
-        <activity android:name=".ui.fragment.guard.GuardRunningMapActivity" />
-        <activity android:name=".ui.fragment.guard.GuardShareMapActivity" />
+        <activity android:name="com.lhzw.bluetooth.ui.guard.GuardSettingActivity" />
+        <activity android:name="com.lhzw.bluetooth.ui.guard.GuardRunningMapActivity" />
+        <activity android:name="com.lhzw.bluetooth.ui.guard.GuardShareMapActivity" />
+        <activity android:name=".ui.group.GroupManagerActivity" />
+        <activity android:name=".ui.group.GroupAddActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

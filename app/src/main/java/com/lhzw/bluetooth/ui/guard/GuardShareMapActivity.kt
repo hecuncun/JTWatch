@@ -1,4 +1,4 @@
-package com.lhzw.bluetooth.ui.fragment.guard
+package com.lhzw.bluetooth.ui.guard
 import android.content.Intent
 import android.location.Geocoder
 import android.net.Uri

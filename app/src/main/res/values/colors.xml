@@ -88,6 +88,10 @@
     <color name="color_gray_666666">#666666</color>
     <color name="color_gray_999999">#999999</color>
     <color name="color_gray_535353">#535353</color>
+    <color name="color_gray_F7F7F7">#F7F7F7</color>
+    <color name="color_gray_E0E0E0">#E0E0E0</color>
+    <color name="color_gray_919191">#919191</color>
+    <color name="color_gray_BFBFBF">#BFBFBF</color>
     <color name="color_red_180008">#180008</color>
     <color name="color_green_00FFFF">#00FFFF</color>
     <color name="color_yellow_primary">#917d2d</color>

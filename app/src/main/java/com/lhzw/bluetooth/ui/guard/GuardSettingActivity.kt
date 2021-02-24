@@ -1,4 +1,4 @@
-package com.lhzw.bluetooth.ui.fragment.guard
+package com.lhzw.bluetooth.ui.guard
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -9,7 +9,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.support.v4.app.ActivityCompat
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import com.lhzw.bluetooth.R
@@ -35,7 +34,6 @@ import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
-import kotlin.random.Random.Default.nextInt
 
 
 /**
@@ -44,6 +42,7 @@ import kotlin.random.Random.Default.nextInt
 class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEngineResult> {
     private var guardTime = 60//分钟
     private var guardEndTime: Long by Preference(Constants.GUARD_END_TIME, 0)//守护结束时间
+    private var guardStartTime: Long by Preference(Constants.GUARD_START_TIME, 0)//守护开始时间
     private var gid:  String by Preference(Constants.GUARD_ID, "0")//守护结束id
     private var mapBoxMap: MapboxMap?=null
 
@@ -190,6 +189,7 @@ class GuardSettingActivity : BaseMapActivity(),LocationEngineCallback<LocationEn
             //开始倒计时
 
             //设置记录开始守护的时间
+            guardStartTime = System.currentTimeMillis()
             guardEndTime = System.currentTimeMillis() + guardTime * 60 * 1000
             //此处需要请求服务器获取此次守护id,保存起来
             gid = Random().nextInt(100).toString()
