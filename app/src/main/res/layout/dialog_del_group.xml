@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <TextView
+        android:padding="@dimen/dp_10"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textSize="@dimen/text_size_big"
+        android:textColor="@color/color_gray_919191"
+        android:textStyle="bold"
+        android:text="群组解散后不可恢复，是否继续解散？"/>
+    <View
+       android:layout_width="match_parent"
+        android:background="@color/color_gray_BFBFBF"
+        android:layout_height="1px"/>
+    <TextView
+        android:id="@+id/tv_sure"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="@dimen/text_size_big"
+        android:textColor="@color/text_color_gray"
+        android:background="@color/white"
+        android:textStyle="bold"
+        android:text="是"/>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/color_gray_BFBFBF"
+        android:layout_height="1px"/>
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:padding="@dimen/dp_10"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/text_color_gray"
+        android:background="@color/white"
+        android:text="取消"/>
+
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.lhzw.bluetooth.adapter
 import android.content.Context
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -10,6 +11,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.lhzw.bluetooth.R
 import com.lhzw.bluetooth.bean.ExpandableBean
+import com.lhzw.bluetooth.ui.activity.ScanQRCodeActivity
+import com.lhzw.bluetooth.ui.group.GroupManagerActivity
+import com.lhzw.bluetooth.uitls.ToastUtils
+import com.lhzw.bluetooth.view.DelGroupDialog
 
 
 /**
@@ -120,9 +125,25 @@ class GroupExpandableAdapter(private val context: Context, private val expandabl
         }
         groupHolder.llDelGroup?.setOnClickListener {
             Log.e("group", "del groupPosition = $groupPosition")
+            //显示确认弹窗
+             val delDialog = DelGroupDialog(context)
+            delDialog.setOnChoseListener {resId->
+                when (resId) {
+                    R.id.tv_sure -> {
+                        Toast.makeText(context,"删除成功",Toast.LENGTH_SHORT).show()
+                        delDialog.dismiss()
+                    }
+                    R.id.tv_cancel -> {delDialog.dismiss()}
+                    else -> {
+                    }
+                }
+            }
+            delDialog.show()
         }
         groupHolder.llAddPerson?.setOnClickListener {
             Log.e("group", "add groupPosition = $groupPosition")
+            //打开扫码页
+            mOnAddPersonClickListener?.onAddClick(groupPosition)
         }
         return convertView!!
     }
@@ -170,6 +191,15 @@ class GroupExpandableAdapter(private val context: Context, private val expandabl
     }
 
     override fun isChildSelectable(p0: Int, p1: Int): Boolean = true
+    //点击添加组员回调
+    private var mOnAddPersonClickListener:OnAddPersonClickListener?=null
+
+    interface OnAddPersonClickListener {
+        fun onAddClick(groupPosition:Int)
+    }
+    fun setOnAddPersonClickListener(onAddPersonClickListener: OnAddPersonClickListener){
+        mOnAddPersonClickListener = onAddPersonClickListener
+    }
 
     class GroupViewHolder {
         var etGroupName: EditText? = null
