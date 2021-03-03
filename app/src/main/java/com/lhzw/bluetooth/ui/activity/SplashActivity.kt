@@ -44,7 +44,6 @@ class SplashActivity : BaseActivity() {
                     //不同意
                     agreementDialog?.dismiss()
                     finish()
-
                 })
             }
             fadeIn(tv_login, 0.1f, 1.0f, 2300)
