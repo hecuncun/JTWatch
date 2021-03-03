@@ -1,6 +1,7 @@
 package com.lhzw.bluetooth.ui.activity
 
 import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
  * Created by hecuncun on 2019/11/12
  */
 class SplashActivity : BaseActivity() {
-    private var alphaAnimation: AlphaAnimation? = null
+  //  private var alphaAnimation: AlphaAnimation? = null
 
     override fun attachLayoutRes(): Int = R.layout.activity_splash
     override fun initData() {
@@ -24,7 +25,14 @@ class SplashActivity : BaseActivity() {
     private var isAgree: Boolean by Preference(Constants.IS_AGREE, false)
     private var agreementDialog:AgreementDialog?=null
     override fun initView() {
+        video_view.setVideoURI(Uri.parse("android.resource://"+ packageName +"/"+R.raw.splash_video))
+        video_view.start()
+        video_view.setOnCompletionListener {
+            if (!firest_login){
+                jumpToLogin()
+            }
 
+        }
         if (firest_login) {
             //显示权限弹框
             agreementDialog= AgreementDialog(this)
@@ -32,13 +40,6 @@ class SplashActivity : BaseActivity() {
             agreementDialog?.setCancelable(false)
             if (!isAgree){//还未同意
                 agreementDialog?.show()
-                // 适配今日头条弹窗不居中解决
-//            val lp= agreementDialog!!.window.attributes;
-////设置宽高，高度默认是自适应的，宽度根据屏幕宽度比例设置
-//            lp.width = ScreenUtils.getWidth(this);
-////这里设置居中
-//            lp.gravity = Gravity.CENTER;
-//            agreementDialog?.window?.attributes = lp
                 agreementDialog?.setOnConfirmListener(View.OnClickListener {
                     //不同意
                     agreementDialog?.dismiss()
@@ -51,25 +52,27 @@ class SplashActivity : BaseActivity() {
                 jumpToLogin()
             }
         }
-        alphaAnimation = AlphaAnimation(0.3F, 1.0F)
-        alphaAnimation?.run {
-            duration = 2000
-            setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationRepeat(p0: Animation?) {
-                }
 
-                override fun onAnimationEnd(p0: Animation?) {
-                    if (!firest_login) {
-                        jumpToLogin()
 
-                    }
-                }
-
-                override fun onAnimationStart(p0: Animation?) {
-                }
-            })
-        }
-        splash_view.startAnimation(alphaAnimation)
+//        alphaAnimation = AlphaAnimation(0.3F, 1.0F)
+//        alphaAnimation?.run {
+//            duration = 2000
+//            setAnimationListener(object : Animation.AnimationListener {
+//                override fun onAnimationRepeat(p0: Animation?) {
+//                }
+//
+//                override fun onAnimationEnd(p0: Animation?) {
+//                    if (!firest_login) {
+//                        jumpToLogin()
+//
+//                    }
+//                }
+//
+//                override fun onAnimationStart(p0: Animation?) {
+//                }
+//            })
+//        }
+//        splash_view.startAnimation(alphaAnimation)
     }
 
     private fun jumpToLogin() {
@@ -106,7 +109,6 @@ class SplashActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        alphaAnimation = null
     }
 
 }
